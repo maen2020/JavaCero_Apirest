@@ -1,0 +1,15 @@
+# Archivo YML para crear docker.
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest # Uiltima version de postgres
+    restart: always # Reinicion
+    environment: # Variables de entorno
+      POSTGRES_USER: ${SPRING_DATASOURSE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURSE_PASSWORD}
+      POSTGRES_DB: ${SPRING_DATASOURSE_DB}
+    ports: # Asignacion de puertos para la base de datos
+      - "5432:5432"
+    volumes: # Generar carpeta que contega toda la informacion de la base de datos.
+      - ./postgres:/var/lib/postgresql/data
