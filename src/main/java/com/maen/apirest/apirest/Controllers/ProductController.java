@@ -41,7 +41,7 @@ public class ProductController {
         return productRepository.save(product);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public Product updateProduct(@PathVariable Long id, @RequestBody Product product){
         Product updateProduct = productRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("El registro que se intenta actualizar no existe."));
@@ -57,6 +57,6 @@ public class ProductController {
         .orElseThrow(() -> new RuntimeException("Registro no encontrado"));
 
         productRepository.delete(deleteProduct);
-        return "El producto con el id: " + id + "se elimino correctamente.";
+        return "El producto con el id: " + id + " se elimino correctamente.";
     }
 }
